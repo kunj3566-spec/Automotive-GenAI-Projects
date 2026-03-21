@@ -1,28 +1,36 @@
 # Automotive In-Vehicle RAG Assistant
 
-This project implements a vehicle-oriented Retrieval-Augmented Generation (RAG) assistant for automotive knowledge using Python, LangChain, FAISS, and OpenAI.
+## 🚗 Project Overview
 
-It is designed as a prototype for in-vehicle AI use cases such as:
-- ADAS feature explanation
-- AUTOSAR architecture knowledge
-- OTA update guidance
-- Diagnostics-related Q&A
-- Cockpit assistant support
+This project implements a vehicle-oriented Retrieval-Augmented Generation (RAG) assistant designed for in-vehicle AI use cases.
 
-## Features
+It simulates an intelligent cockpit assistant that can answer driver questions about:
+- ADAS (Advanced Driver Assistance Systems)
+- AUTOSAR software architecture
+- OTA (Over-the-Air updates)
+- Vehicle diagnostics
+- Cockpit AI assistance
 
-- Local document ingestion from automotive knowledge files
-- Text chunking for retrieval preparation
-- Semantic embeddings using OpenAI
+The system retrieves relevant domain knowledge from a local knowledge base and generates grounded responses using LLMs, reducing hallucination and improving reliability.
+
+## 🎯 Key Features
+
+- Document ingestion from automotive knowledge files
+- Text chunking for retrieval optimization
+- Semantic embedding using OpenAI
 - Vector similarity search with FAISS
-- Context-grounded answer generation with LLM
-- Interactive command-line query flow
+- Context-grounded answer generation using LLM
+- Interactive CLI-based assistant simulation
 
-## Architecture
+## 🧠 System Architecture
 
-User Query → Retrieval → Context Assembly → LLM → Answer
+User Query  
+→ Vector Retrieval (FAISS)  
+→ Context Assembly  
+→ LLM (GPT)  
+→ Final Answer
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Python
 - LangChain
@@ -30,18 +38,17 @@ User Query → Retrieval → Context Assembly → LLM → Answer
 - FAISS
 - python-dotenv
 
-## Project Structure
+## 🚘 Automotive Context
 
-```text
-data/docs/
-  adas_notes.txt
-  autosar_notes.txt
-  ota_notes.txt
-  diagnostics_notes.txt
-  cockpit_assistant_notes.txt
+Unlike generic RAG demos, this project focuses on automotive-specific domains such as ADAS, AUTOSAR, OTA, and diagnostics.
 
-src/
-  load_docs.py
-  split_docs.py
-  embed_store.py
-  rag_pipeline.py
+It reflects real-world in-vehicle AI assistant scenarios, where responses must be:
+- Context-aware  
+- Safety-conscious  
+- Concise and non-distracting  
+
+This makes the system closer to real production use cases in software-defined vehicles.
+
+
+
+
