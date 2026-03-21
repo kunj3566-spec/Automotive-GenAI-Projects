@@ -1,0 +1,3 @@
+Vehicle diagnostics are used to detect, isolate, and troubleshoot faults in ECUs and vehicle networks.
+Diagnostic trouble codes help identify abnormal behavior in software, hardware, or communication.
+Diagnostics are important during development, service, and post-deployment monitoring.

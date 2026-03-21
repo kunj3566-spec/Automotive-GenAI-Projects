@@ -1,9 +1,0 @@
-AUTOSAR is a standardized automotive software architecture.
-Classic AUTOSAR is designed for microcontrollers and resource-constrained ECUs.
-Adaptive AUTOSAR targets high-performance computing platforms.
-
-ADAS perception systems rely on sensors such as cameras, LiDAR, radar, and ultrasonic sensors.
-Sensor fusion combines multiple sensor inputs to improve accuracy.
-
-OTA (Over-the-Air) allows remote software updates for ECUs.
-Diagnostics are used to detect and troubleshoot faults in vehicle systems.

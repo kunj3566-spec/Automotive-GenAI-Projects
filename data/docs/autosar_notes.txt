@@ -1,0 +1,4 @@
+AUTOSAR is a standardized automotive software architecture.
+Classic AUTOSAR is designed for microcontrollers and resource-constrained ECUs.
+Adaptive AUTOSAR targets high-performance computing platforms and service-oriented architectures.
+Adaptive AUTOSAR is more suitable for compute-intensive functions such as automated driving and high-performance cockpit systems.

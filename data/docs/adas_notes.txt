@@ -1,0 +1,4 @@
+ADAS perception systems rely on multiple sensors such as cameras, radar, LiDAR, and ultrasonic sensors.
+Sensor fusion combines multiple sensor inputs to improve robustness and accuracy.
+Perception outputs are used by downstream planning and control functions.
+Typical ADAS functions include lane keeping, adaptive cruise control, emergency braking, and traffic sign recognition.

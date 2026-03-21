@@ -45,7 +45,7 @@ Question:
 
 
 if __name__ == "__main__":
-    question = "What is AUTOSAR?"
+    question = input("\nDriver asks (type 'exit' to quit): ")
     answer, docs = ask_question(question)
 
     print(">>> ANSWER <<<")

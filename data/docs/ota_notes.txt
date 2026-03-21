@@ -1,0 +1,4 @@
+OTA stands for Over-the-Air software update.
+OTA allows remote delivery of software packages to in-vehicle ECUs without requiring a workshop visit.
+A robust OTA system includes package verification, compatibility checks, rollback support, and secure communication.
+If an update fails, the system should support recovery or rollback to a safe software version.
