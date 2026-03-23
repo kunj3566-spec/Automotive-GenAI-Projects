@@ -1,37 +1,27 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_community.vectorstores import FAISS
-from split_docs import split_documents
+from langchain_openai import ChatOpenAI
+from embed_store import get_or_create_vectorstore
 
 
-def build_vectorstore():
-    chunks = split_documents()
-    embeddings = OpenAIEmbeddings()
-    vectorstore = FAISS.from_documents(chunks, embeddings)
-    return vectorstore
-
-
-def ask_question(question: str):
-    # 1. 建立向量库
-    vectorstore = build_vectorstore()
-
-    # 2. 先检索最相关内容
-    docs = vectorstore.similarity_search(question, k=2)
-
-    # 3. 拼接上下文
+def ask_question(question: str, vectorstore):
+    docs = vectorstore.similarity_search(question, k=3)
     context = "\n\n".join([doc.page_content for doc in docs])
 
-    # 4. 调用 LLM
     llm = ChatOpenAI(model="gpt-4o-mini")
 
     prompt = f"""
-You are an automotive AI assistant.
+You are an in-vehicle AI assistant for automotive systems.
 
-Answer the question concisely and clearly based on the context below.
-Do not repeat the full context.
-Summarize the key points.
+Your job is to answer driver or passenger questions about vehicle functions, ADAS, AUTOSAR, OTA, diagnostics, and software architecture.
+
+Rules:
+- Answer clearly and concisely.
+- Use only the context provided below.
+- Do not repeat the full context.
+- If the answer is not supported by the context, say you do not know.
+- Keep the response safe and suitable for in-vehicle interaction.
 
 Context:
 {context}
@@ -45,13 +35,22 @@ Question:
 
 
 if __name__ == "__main__":
-    question = input("\nDriver asks (type 'exit' to quit): ")
-    answer, docs = ask_question(question)
+    print(">>> INITIALIZING VEHICLE KNOWLEDGE BASE <<<")
+    vectorstore = get_or_create_vectorstore()
 
-    print(">>> ANSWER <<<")
-    print(answer)
+    while True:
+        question = input("\nDriver asks (type 'exit' to quit): ")
 
-    print("\n>>> RETRIEVED DOCS <<<")
-    for doc in docs:
-        print("----")
-        print(doc.page_content)
+        if question.lower() == "exit":
+            print("Exiting assistant.")
+            break
+
+        answer, docs = ask_question(question, vectorstore)
+
+        print("\n>>> VEHICLE ASSISTANT ANSWER <<<")
+        print(answer)
+
+        print("\n>>> RETRIEVED DOCS <<<")
+        for doc in docs:
+            print("----")
+            print(doc.page_content)
