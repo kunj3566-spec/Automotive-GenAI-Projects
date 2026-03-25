@@ -4,7 +4,7 @@ load_dotenv()
 from pathlib import Path
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from split_docs import split_documents
+from src.split_docs import split_documents
 
 
 INDEX_DIR = "faiss_index"
@@ -15,6 +15,7 @@ def build_and_save_vectorstore(index_dir: str = INDEX_DIR):
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.from_documents(chunks, embeddings)
     vectorstore.save_local(index_dir)
+    print(">>> VECTOR DB SAVED TO LOCAL <<<")
     return vectorstore
 
 
