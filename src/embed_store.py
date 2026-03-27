@@ -4,7 +4,7 @@ load_dotenv()
 from pathlib import Path
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from src.split_docs import split_documents
+from split_docs import split_documents
 
 
 INDEX_DIR = "faiss_index"

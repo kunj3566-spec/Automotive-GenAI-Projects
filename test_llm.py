@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from langchain_openai import ChatOpenAI
-from src.embed_store import get_or_create_vectorstore
+from embed_store import get_or_create_vectorstore
 
 
 def main():
