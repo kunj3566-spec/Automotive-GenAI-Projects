@@ -50,5 +50,14 @@ It reflects real-world in-vehicle AI assistant scenarios, where responses must b
 This makes the system closer to real production use cases in software-defined vehicles.
 
 
+## System Architecture of In-Vechicle AI 
 
+Driver / Passenger  
+→ Voice or UI Input  
+→ ASR / Input Processing  
+→ Query Orchestrator  
+→ RAG Retrieval or Vehicle Tool Calling  
+→ LLM Runtime  
+→ Response Generation  
+→ HMI / Voice Output
 
