@@ -50,28 +50,6 @@ It reflects real-world in-vehicle AI assistant scenarios, where responses must b
 This makes the system closer to real production use cases in software-defined vehicles.
 
 
-## System Architecture of In-Vechicle AI 
+<img width="372" height="607" alt="image" src="https://github.com/user-attachments/assets/5967f01a-8f61-48da-8560-0af675e314ce" />
 
-Driver / Passenger
-        ↓
-   Voice / UI Input
-        ↓
-      ASR Layer
-        ↓
-   Query Orchestrator
-   (Intent + Routing)
-      ↙         ↘
- RAG Pipeline     Tool Calling Layer
- (Knowledge)      (Vehicle Functions)
-      ↓                 ↓
- Vector DB          Service Layer
- (FAISS / KB)       (APIs / Middleware)
-      ↓                 ↓
-   LLM Runtime    Vehicle Signals / State
-      ↘                 ↓
-        Response Composer
-               ↓
-        HMI / Voice Output
-               ↓
-          Driver Feedback
 
