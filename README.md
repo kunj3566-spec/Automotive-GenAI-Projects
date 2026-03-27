@@ -52,12 +52,26 @@ This makes the system closer to real production use cases in software-defined ve
 
 ## System Architecture of In-Vechicle AI 
 
-Driver / Passenger  
-→ Voice or UI Input  
-→ ASR / Input Processing  
-→ Query Orchestrator  
-→ RAG Retrieval or Vehicle Tool Calling  
-→ LLM Runtime  
-→ Response Generation  
-→ HMI / Voice Output
+Driver / Passenger
+        ↓
+   Voice / UI Input
+        ↓
+      ASR Layer
+        ↓
+   Query Orchestrator
+   (Intent + Routing)
+      ↙         ↘
+ RAG Pipeline     Tool Calling Layer
+ (Knowledge)      (Vehicle Functions)
+      ↓                 ↓
+ Vector DB          Service Layer
+ (FAISS / KB)       (APIs / Middleware)
+      ↓                 ↓
+   LLM Runtime    Vehicle Signals / State
+      ↘                 ↓
+        Response Composer
+               ↓
+        HMI / Voice Output
+               ↓
+          Driver Feedback
 
