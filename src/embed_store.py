@@ -10,43 +10,40 @@ from split_docs import split_documents
 INDEX_DIR = "faiss_index"
 
 
-def build_and_save_vectorstore(index_dir: str = INDEX_DIR):
+def build_and_save_vectorstore():
     chunks = split_documents()
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.from_documents(chunks, embeddings)
-    vectorstore.save_local(index_dir)
-    print(">>> VECTOR DB SAVED TO LOCAL <<<")
+    vectorstore.save_local(INDEX_DIR)
     return vectorstore
 
 
-def load_vectorstore(index_dir: str = INDEX_DIR):
-    index_path = Path(index_dir)
-    if not index_path.exists():
-        raise FileNotFoundError(f"Vector index not found: {index_dir}")
-
+def load_vectorstore():
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.load_local(
-        index_dir,
+        INDEX_DIR,
         embeddings,
         allow_dangerous_deserialization=True
     )
     return vectorstore
 
 
-def get_or_create_vectorstore(index_dir: str = INDEX_DIR):
-    index_path = Path(index_dir)
+def get_vectorstore():
+    index_path = Path(INDEX_DIR)
 
     if index_path.exists():
-        print(">>> LOADING EXISTING VECTOR DB <<<")
-        return load_vectorstore(index_dir)
-
-    print(">>> BUILDING NEW VECTOR DB <<<")
-    return build_and_save_vectorstore(index_dir)
+        print(">>> LOADING EXISTING FAISS INDEX <<<")
+        return load_vectorstore()
+    else:
+        print(">>> BUILDING AND SAVING NEW FAISS INDEX <<<")
+        return build_and_save_vectorstore()
 
 
 if __name__ == "__main__":
-    db = get_or_create_vectorstore()
-    results = db.similarity_search("What is AUTOSAR?", k=2)
+    db = get_vectorstore()
+
+    query = "What is AUTOSAR?"
+    results = db.similarity_search(query, k=2)
 
     print("\n>>> SEARCH RESULTS <<<")
     for r in results:
