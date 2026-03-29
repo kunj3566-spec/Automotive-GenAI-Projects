@@ -206,3 +206,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 *.env
+*.pkl
+*.faiss
+*.pyc
+data/vector_store/
+app/__pycache__/
